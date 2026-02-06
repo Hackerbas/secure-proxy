@@ -12,9 +12,9 @@ COPY . .
 RUN chown -R node:node /app
 USER node
 
-# Hugging Face listens on port 7860
-ENV PORT=7860
-EXPOSE 7860
+# Match Koyeb's default port
+ENV PORT=8000
+EXPOSE 8000
 
 # Start the secure server
 CMD ["node", "server.js"]
