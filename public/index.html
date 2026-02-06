@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Secure Search</title>
+    <style>
+        body { background: #121212; color: white; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        input { padding: 15px; width: 400px; border-radius: 25px; border: 1px solid #333; background: #222; color: white; outline: none; }
+        h1 { font-size: 2rem; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Secure Proxy</h1>
+    <form id="proxy-form">
+        <input type="text" id="url-input" placeholder="Search or enter URL securely...">
+    </form>
+
+    <script src="/uv/uv.bundle.js"></script>
+    <script src="/uv/uv.config.js"></script>
+    <script>
+        document.getElementById('proxy-form').addEventListener('submit', async e => {
+            e.preventDefault();
+            const url = document.getElementById('url-input').value;
+            // This encodes the URL so even your ISP can't see what you typed
+            window.location.href = "/service/" + __uv$config.encodeUrl(url);
+        });
+    </script>
+</body>
+</html>
